@@ -16,13 +16,13 @@ use crate::sync::media::changes::MediaChange;
 use crate::sync::media::database::server::ServerMediaDatabase;
 use crate::sync::media::sanity::MediaSanityCheckResponse;
 
-pub(crate) struct ServerMediaManager {
+pub struct ServerMediaManager {
     pub media_folder: PathBuf,
     pub db: ServerMediaDatabase,
 }
 
 impl ServerMediaManager {
-    pub(crate) fn new(user_folder: &Path) -> HttpResult<ServerMediaManager> {
+    pub fn new(user_folder: &Path) -> HttpResult<ServerMediaManager> {
         let media_folder = user_folder.join("media");
         create_dir_all(&media_folder).or_internal_err("media folder create")?;
         Ok(Self {
