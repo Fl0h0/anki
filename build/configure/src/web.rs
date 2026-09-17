@@ -306,7 +306,7 @@ fn check_web(build: &mut Build) -> Result<()> {
     let prettier_pattern = "{**/*.svelte,docs-site/**/*.mdx}";
     let prettier_files = inputs![
         glob!["**/*.svelte", fmt_excluded],
-        glob!["docs-site/**/*.mdx"]
+        glob!["docs-site/**/*.mdx", fmt_excluded]
     ];
 
     build.add_action(
@@ -346,7 +346,7 @@ fn check_web(build: &mut Build) -> Result<()> {
                 ":node_modules",
                 ":ts:generated",
                 glob!["ts/{svelte.config.js,vite.config.ts,tsconfig.json}"],
-                glob!["ts/{lib,deck-options,html-filter,domlib,reviewer,change-notetype}/**/*"],
+                glob!["ts/{lib,routes,reviewer}/**/*"],
             ],
         },
     )?;
